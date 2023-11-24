@@ -38,18 +38,6 @@ class _GroupDividerState extends State<GroupDivider> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
-              // ElevatedButton(
-              //     onPressed: () => Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => const AddMemberList())),
-              //     style: TextButton.styleFrom(
-              //         backgroundColor: Colors.blueGrey,
-              //         textStyle: const TextStyle(
-              //             color: Colors.white,
-              //             fontSize: 20,
-              //             fontWeight: FontWeight.bold)),
-              //     child: const Text('+')),
             ],
           ),
         ),
@@ -170,10 +158,6 @@ class _AddMemberListState extends State<AddMemberList> {
               child: memberList.isEmpty
                   ? const Column(children: [
                       SizedBox(height: 20),
-                      // Text("Name List",
-                      //     style: TextStyle(
-                      //         fontWeight: FontWeight.bold, fontSize: 20)),
-                      // SizedBox(height: 10),
                       Text("No Members Added!!")
                     ])
                   : DataTable(
@@ -182,13 +166,6 @@ class _AddMemberListState extends State<AddMemberList> {
                         DataColumn(
                           label: Container(
                             alignment: Alignment.center,
-                            // child: const Text(
-                            //   "Name List",
-                            //   style: TextStyle(
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: 18,
-                            //   ),
-                            // ),
                           ),
                         ),
                         const DataColumn(label: Text("")),
@@ -271,29 +248,3 @@ class _AddMemberListState extends State<AddMemberList> {
     );
   }
 }
-
-
-
-
-// memberList.isEmpty
-          //     ? const Text('No members yet..')
-          //     : Expanded(
-          //         child: ListView.builder(
-          //           itemCount: memberList.length,
-          //           itemBuilder: (context, index) => getRow(index),
-          //         ),
-          //       ),
-          // Row(
-          //   children: [
-          //     TextButton(
-          //         onPressed: () {
-          //           String name = _addMemberController.text.trim();
-          //           if (name.isNotEmpty && memberList.isNotEmpty) {
-          //             setState(() {
-          //               memberList.add();
-          //             });
-          //           }
-          //         },
-          //         child: const Text('Add Member'))
-          //   ],
-          // )
