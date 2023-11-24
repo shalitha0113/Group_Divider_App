@@ -10,7 +10,7 @@ class GroupDividerApp extends StatelessWidget {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: const Color.fromARGB(255, 148, 147, 146),
-            title: const Text('Group Divider'),
+            title: const Text('Group Divider '),
             titleTextStyle: const TextStyle(fontSize: 28),
             centerTitle: true,
           ),
