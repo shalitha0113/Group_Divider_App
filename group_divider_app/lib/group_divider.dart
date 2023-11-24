@@ -23,33 +23,53 @@ class _GroupDividerState extends State<GroupDivider> {
                       MaterialPageRoute(
                           builder: (context) => const HomePage())),
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
+                      backgroundColor:const Color.fromARGB(255, 148, 147, 146),
+                      padding: const EdgeInsets.all(0.4),
                       textStyle: const TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 45,
                           fontWeight: FontWeight.bold)),
+    
                   child: const Text('<')),
               const SizedBox(
-                width: 10,
+                width: 40,
               ),
-              const Text('Member List'),
-              ElevatedButton(
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddMemberList())),
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
-                      textStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
-                  child: const Text('+')),
+              const Text('Member List',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+              // ElevatedButton(
+              //     onPressed: () => Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const AddMemberList())),
+              //     style: TextButton.styleFrom(
+              //         backgroundColor: Colors.blueGrey,
+              //         textStyle: const TextStyle(
+              //             color: Colors.white,
+              //             fontSize: 20,
+              //             fontWeight: FontWeight.bold)),
+              //     child: const Text('+')),
             ],
           ),
         ),
-        body: const AddMemberList(),
+        body: const AddMemberBody(),
       ),
+    );
+  }
+}
+
+const beginAlignment = Alignment.topRight;
+const endAlignment = Alignment.bottomLeft;
+
+class AddMemberBody extends StatelessWidget {
+  const AddMemberBody({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: beginAlignment, end: endAlignment, colors: [ Color.fromARGB(255, 7, 255, 152),
+        Color.fromARGB(255, 2, 80, 54)])),
+        child:const Center(child: AddMemberList()),
     );
   }
 }
@@ -108,13 +128,12 @@ class _AddMemberListState extends State<AddMemberList> {
                             }
                           },
                           style: TextButton.styleFrom(
-                            backgroundColor:
+                              backgroundColor:
                                   const Color.fromARGB(255, 231, 99, 43),
                               foregroundColor:
                                   const Color.fromARGB(255, 229, 228, 235),
                               textStyle: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)
-                          ),
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
                           child: const Text('Add')),
                       const SizedBox(
                         width: 10,
