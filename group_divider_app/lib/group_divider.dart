@@ -23,18 +23,21 @@ class _GroupDividerState extends State<GroupDivider> {
                       MaterialPageRoute(
                           builder: (context) => const HomePage())),
                   style: TextButton.styleFrom(
-                      backgroundColor:const Color.fromARGB(255, 148, 147, 146),
+                      backgroundColor: const Color.fromARGB(255, 148, 147, 146),
                       padding: const EdgeInsets.all(0.4),
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 45,
                           fontWeight: FontWeight.bold)),
-    
                   child: const Text('<')),
               const SizedBox(
                 width: 40,
               ),
-              const Text('Member List',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+              const Text(
+                'Member List',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
               // ElevatedButton(
               //     onPressed: () => Navigator.push(
               //         context,
@@ -61,15 +64,19 @@ const endAlignment = Alignment.bottomLeft;
 
 class AddMemberBody extends StatelessWidget {
   const AddMemberBody({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-              begin: beginAlignment, end: endAlignment, colors: [ Color.fromARGB(255, 7, 255, 152),
-        Color.fromARGB(255, 2, 80, 54)])),
-        child:const Center(child: AddMemberList()),
+              begin: beginAlignment,
+              end: endAlignment,
+              colors: [
+            Color.fromARGB(255, 7, 255, 152),
+            Color.fromARGB(255, 2, 80, 54)
+          ])),
+      child: const Center(child: AddMemberList()),
     );
   }
 }
@@ -154,6 +161,139 @@ class _AddMemberListState extends State<AddMemberList> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: memberList.isEmpty
+                  ? const Column(children: [
+                      SizedBox(height: 20),
+                      // Text("Name List",
+                      //     style: TextStyle(
+                      //         fontWeight: FontWeight.bold, fontSize: 20)),
+                      // SizedBox(height: 10),
+                      Text("No Members Added!!")
+                    ])
+                  : DataTable(
+                      headingRowHeight: 10,
+                      columns: [
+                        DataColumn(
+                          label: Container(
+                            alignment: Alignment.center,
+                            // child: const Text(
+                            //   "Name List",
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: 18,
+                            //   ),
+                            // ),
+                          ),
+                        ),
+                        const DataColumn(label: Text("")),
+                      ],
+                      rows: memberList
+                          .map(
+                            (name) => DataRow(
+                              cells: [
+                                DataCell(
+                                  SizedBox(
+                                    width: 160,
+                                    child: Text(' $name'),
+                                  ),
+                                ),
+                                DataCell(
+                                  IconButton(
+                                    icon: const Icon(Icons.delete),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                          .toList(),
+                    ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              ElevatedButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 79, 89, 227),
+                    foregroundColor: const Color.fromARGB(255, 229, 228, 235),
+                    textStyle: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
+                onPressed: addMemberOnPressed,
+                child: const Text('Add Member'),
+              ),
+              const SizedBox(width: 8),
+              ElevatedButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 227, 79, 79),
+                    foregroundColor: const Color.fromARGB(255, 229, 228, 235),
+                    textStyle: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
+                child: const Text('Clear the List'),
+                onPressed: () {
+                  setState(() {
+                    memberList = [];
+                  });
+                },
+              ),
+              const SizedBox(width: 8),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          // const ElevatedButton(
+          //     // onPressed: !isMembersEnough()
+          //     //     ? null
+          //     //     : () {
+          //     //         memberList.shuffle();
+          //     //         Navigator.push(
+          //     //             context,
+          //     //             MaterialPageRoute(
+          //     //                 builder: (context) =>
+          //     //                     GroupLists(memberList: memberList)
+          //     //             )
+          //     //         );
+          //     //       },
+          //     // child: const Text("Divide to Groups")
+          //     ),
+          const SizedBox(
+            height: 30,
+          )
+        ],
+      ),
+    );
   }
 }
+
+
+
+
+// memberList.isEmpty
+          //     ? const Text('No members yet..')
+          //     : Expanded(
+          //         child: ListView.builder(
+          //           itemCount: memberList.length,
+          //           itemBuilder: (context, index) => getRow(index),
+          //         ),
+          //       ),
+          // Row(
+          //   children: [
+          //     TextButton(
+          //         onPressed: () {
+          //           String name = _addMemberController.text.trim();
+          //           if (name.isNotEmpty && memberList.isNotEmpty) {
+          //             setState(() {
+          //               memberList.add();
+          //             });
+          //           }
+          //         },
+          //         child: const Text('Add Member'))
+          //   ],
+          // )
